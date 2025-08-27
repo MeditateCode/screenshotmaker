@@ -37,6 +37,7 @@ body {
 .logo {
   width: 140px;
   margin-bottom: 38px;
+  margin-top: 28px; /* Added space from logo to top */
   display: block;
   filter: drop-shadow(0 2px 8px rgba(37,99,235,0.10));
 }
