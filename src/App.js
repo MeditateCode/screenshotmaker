@@ -18,6 +18,8 @@ function App() {
 
   const [canvasSize, setCanvasSize] = useState({ w: 700, h: 400 });
 
+  const [borderRadius, setBorderRadius] = useState('24px'); // Border radius state
+
   const captureRef = useRef(null);
 
   const [cropMode, setCropMode] = useState(false);
@@ -212,6 +214,22 @@ function App() {
           </div>
         </div>
 
+        {/* Border Radius Options */}
+        <div style={{ width: '100%', margin: '18px 0 10px 0' }}>
+          <h2 style={{ marginBottom: 8 }}>Border Radius</h2>
+          <select
+            className="border-radius-select"
+            value={borderRadius}
+            onChange={e => setBorderRadius(e.target.value)}
+            style={{ width: '90%', padding: '8px', borderRadius: 8, fontSize: '1rem' }}
+          >
+            <option value="0">None</option>
+            <option value="10px">Small</option>
+            <option value="20px">Medium</option>
+            <option value="40px">Large</option>
+          </select>
+        </div>
+
         <div>
           <h2>Zoom</h2>
           <input
@@ -261,11 +279,7 @@ function App() {
             <input type="file" accept="image/*" hidden onChange={handleUploadLogo} />
           </label>
 
-          {image && (
-            <button onClick={() => setCropMode(true)} className="btn small yellow">
-              Crop
-            </button>
-          )}
+        
         </div>
 
         <div
@@ -275,6 +289,7 @@ function App() {
             width: `${previewWidth}px`,
             height: `${fixedHeight}px`,
             backgroundImage: bgImage ? `url(${bgImage})` : bgGradient,
+            borderRadius: borderRadius === "0" ? "0px" : borderRadius,
           }}
         >
           {image ? (
@@ -297,26 +312,6 @@ function App() {
           )}
         </div>
 
-        {cropMode && image && (
-          <div className="crop-overlay">
-            <div className="crop-container">
-              <Cropper
-                image={image}
-                crop={crop}
-                zoom={cropZoom}
-                aspect={undefined}
-                onCropChange={setCrop}
-                onZoomChange={setCropZoom}
-                onCropComplete={onCropComplete}
-              />
-            </div>
-
-            <div className="crop-buttons">
-              <button onClick={finishCrop} className="btn small green">Crop</button>
-              <button onClick={() => setCropMode(false)} className="btn small red">Cancel</button>
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );

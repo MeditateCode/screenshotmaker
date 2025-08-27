@@ -25,27 +25,26 @@ body {
   width: 270px;
   background: var(--sidebar-bg);
   color: var(--text-dark);
-  padding: 36px 24px 24px 24px;
+  padding: 0 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 2px 0 16px 0 rgba(37,99,235,0.07);
-  border-top-right-radius: 32px;
-  border-bottom-right-radius: 32px;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .logo {
-  width: 140px;
-  margin-bottom: 38px;
-  margin-top: 28px; /* Added space from logo to top */
+  width: 170px;
+  margin-top: 22px;
+  margin-bottom: 18px;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(37,99,235,0.10));
 }
 
 .sidebar label.btn,
 .sidebar .btn {
-  width: 100%;
-  margin-bottom: 22px;
+  width: 70%;
   font-size: 1rem;
   padding: 13px 0;
   border-radius: 10px;
@@ -58,6 +57,7 @@ body {
   letter-spacing: 0.01em;
   box-shadow: 0 2px 8px rgba(37,99,235,0.08);
   transition: background 0.2s, color 0.2s;
+  margin-bottom: 18px;
 }
 
 .sidebar label.btn:hover,
@@ -66,11 +66,24 @@ body {
   color: var(--text-dark);
 }
 
+.sidebar h2 {
+  margin: 16px 0 10px 0;
+  font-size: 1.13rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  letter-spacing: 0.01em;
+  width: 100%;
+  text-align: left;
+}
+
 .wallpapers {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
   gap: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
+  width: 100%;
+  justify-items: center;
 }
 
 .wallpaper {
@@ -78,16 +91,11 @@ body {
   height: 62px;
   border-radius: 12px;
   cursor: pointer;
-  border: 2px solid transparent;
   transition: border 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(37,99,235,0.07);
 }
 
 .wallpaper:hover,
-.wallpaper.custom:hover {
-  border: 2px solid var(--primary-blue);
-  box-shadow: 0 4px 16px rgba(37,99,235,0.13);
-}
 
 .wallpaper.custom {
   display: flex;
@@ -112,28 +120,46 @@ body {
   box-shadow: 0 1px 4px rgba(37,99,235,0.10);
 }
 
-.sidebar h2 {
-  margin: 22px 0 12px 0;
-  font-size: 1.13rem;
-  font-weight: 600;
-  color: var(--primary-blue);
-  letter-spacing: 0.01em;
+.border-radius-select {
+  margin-bottom: 14px;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #1e293b;
+  font-weight: 500;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
 input[type="range"] {
   width: 100%;
-  margin: 12px 0 24px 0;
+  margin: 10px 0 18px 0;
   accent-color: var(--primary-blue);
+}
+
+.btn.selected {
+  outline: 2px solid var(--primary-blue);
+  background: var(--secondary-blue);
+  color: var(--text-dark);
 }
 
 .btn.download {
   background: var(--accent);
   color: var(--text-dark);
   font-weight: 600;
-  margin-top: 24px;
+  margin-top: auto;
+  margin-bottom: 10;
   border-radius: 10px;
   transition: background 0.2s, color 0.2s;
   box-shadow: 0 2px 8px rgba(251,191,36,0.10);
+  width: 100%;
+  padding: 16px 0;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .btn.download:hover {
@@ -148,16 +174,14 @@ input[type="range"] {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 48px 0;
+  padding: 18px 0px 0px 0px;
   background: var(--main-bg);
-  min-height: 100vh;
 }
 
 .toolbar {
   display: flex;
   gap: 18px;
   margin-bottom: 32px;
-  align-items: center;
   width: 92%;
   max-width: 1100px;
   background: #fff;
@@ -254,13 +278,11 @@ select:focus {
 
 .logo-overlay {
   position: absolute;
-  bottom: 22px;
+  top: 22px;
   right: 22px;
-  width: 74px;
-  height: 74px;
+  height: 30px;
   object-fit: contain;
   border-radius: 14px;
-  background: rgba(255,255,255,0.85);
   box-shadow: 0 2px 8px rgba(37,99,235,0.10);
   padding: 7px;
 }
@@ -271,30 +293,6 @@ select:focus {
   opacity: 0.7;
   text-align: center;
   font-weight: 500;
-}
-
-.crop-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(37,99,235,0.18);
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.crop-container {
-  background: #fff;
-  padding: 28px;
-  border-radius: 22px;
-  box-shadow: 0 4px 32px rgba(37,99,235,0.18);
-}
-
-.crop-buttons {
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  margin-top: 22px;
 }
 
 /* Responsive tweaks */
@@ -319,5 +317,3 @@ select:focus {
     border-radius: 18px;
   }
 }
-
-/* ...existing code... */
