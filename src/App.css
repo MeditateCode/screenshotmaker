@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
+  display: flex;
   min-height: 100vh;
+}
+
+.sidebar {
+  width: 16rem;
+  background: #18181b;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.logo {
+  width: 10rem;
+  margin: 0 auto 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.btn input {
+  display: none;
+}
+
+.btn.indigo { background: #4f46e5; color: white; }
+.btn.purple { background: #9333ea; color: white; }
+.btn.green { background: #16a34a; color: white; }
+.btn.pink { background: #db2777; color: white; }
+.btn.yellow { background: #ca8a04; color: white; }
+.btn.red { background: #dc2626; color: white; }
+
+.wallpapers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.wallpaper {
+  height: 60px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.wallpaper.custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorpickers input {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.controls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.canvas {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.canvas img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0.5rem;
+  transition: transform 0.3s;
+}
+
+.placeholder {
+  color: #a1a1aa;
+}
+
+.logo-overlay {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+}
+
+.crop-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cropper-container {
+  width: 80%;
+  height: 80%;
+  background: black;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.crop-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
